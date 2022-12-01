@@ -37,10 +37,11 @@ let numbers = document.querySelectorAll(".number")
 let clear = document.querySelector(".clear")
 let equal = document.querySelector(".enter")
 
-let firstNumber = ""
-let secondNumber = ""
-let op = ''
-let isComplete = false
+let firstNumber = "";
+let secondNumber = "";
+let oldSecondNumber = "";
+let op = "";
+let isComplete = false;
 
 
 numbers.forEach(number => {
@@ -53,9 +54,11 @@ clear.addEventListener('click', reset)
 equal.addEventListener('click', run)
 
 function update() {
-    let screen = `${firstNumber} ${op} ${secondNumber}`
-    screenDiv.textContent = screen
-    console.log(firstNumber.length)
+    if (firstNumber.length + secondNumber.length < 8) {
+        oldSecondNumber = secondNumber;
+    }
+    let screen = `${firstNumber} ${op} ${oldSecondNumber}`;
+    screenDiv.textContent = screen;
 }
 
 function setNumber(){
@@ -83,7 +86,7 @@ function reset() {
 }
 
 function run(){
-    let result = operate(op, parseInt(firstNumber), parseInt(secondNumber));
+    let result = operate(op, parseInt(firstNumber), parseInt(oldSecondNumber));
     reset()
     firstNumber = result
     update()
