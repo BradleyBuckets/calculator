@@ -39,9 +39,11 @@ let equal = document.querySelector(".enter")
 
 let firstNumber = "";
 let secondNumber = "";
+let oldFirstNumber = "";
 let oldSecondNumber = "";
 let op = "";
 let isComplete = false;
+let ready = false;
 
 
 numbers.forEach(number => {
@@ -54,14 +56,19 @@ clear.addEventListener('click', reset)
 equal.addEventListener('click', run)
 
 function update() {
-    if (secondNumber.length < 5) {
-        oldSecondNumber = secondNumber;
-    }
-    let screen = `${firstNumber} ${op} ${oldSecondNumber}`;
+    oldFirstNumber = firstNumber;
+    oldSecondNumber = secondNumber;
+    // if (firstNumber.length + secondNumber.length < 8) {
+    // }
+    // if (secondNumber.length < 5) {
+    //     oldSecondNumber = secondNumber;
+    // }
+    let screen = `${oldFirstNumber} ${op} ${oldSecondNumber}`;
     screenDiv.textContent = screen;
 }
 
 function setNumber(){
+    ready = true;
     if (!isComplete){
         firstNumber += this.textContent;
     }
@@ -72,8 +79,10 @@ function setNumber(){
 }
 
 function setOperand() {
-    op = this.textContent;
-    isComplete = true;
+    if (ready) {
+        op = this.textContent;
+        isComplete = true;
+    }
     update()
 }
 
@@ -82,12 +91,14 @@ function reset() {
     secondNumber = '';
     op = '';
     isComplete = false;
+    ready = false;
     update()
 }
 
 function run(){
-    let result = operate(op, parseInt(firstNumber), parseInt(oldSecondNumber));
+    let result = operate(op, parseInt(oldFirstNumber), parseInt(oldSecondNumber));
+    console.log(result)
     reset()
-    firstNumber = result
+    firstNumber = result.toString()
     update()
 }
