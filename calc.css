@@ -16,10 +16,19 @@
 }
 .in {
     border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
 }
 
 .screen {
+    border: 1px solid gray;
+    display: flex;
     grid-column: 1 / span 3;
+    justify-content: end;
+    font-size: 4.5rem;
+    padding: 1rem 2rem 0;
 }
 
 .p {
