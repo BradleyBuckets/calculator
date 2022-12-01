@@ -12,7 +12,7 @@ function divide(a, b){
     if (b == 0) {
         return "Nalgas"
     }
-    return a / b;
+    return Math.floor(a / b);
 }
 
 function operate(operator, a, b){
@@ -54,7 +54,7 @@ clear.addEventListener('click', reset)
 equal.addEventListener('click', run)
 
 function update() {
-    if (firstNumber.length + secondNumber.length < 8) {
+    if (secondNumber.length < 5) {
         oldSecondNumber = secondNumber;
     }
     let screen = `${firstNumber} ${op} ${oldSecondNumber}`;
