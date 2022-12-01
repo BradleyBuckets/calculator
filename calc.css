@@ -7,6 +7,7 @@
 }
 
 .container {
+    background-color: lightslategray;
     height: 50vw;
     width: 50vw;
     border: 1px solid black;
@@ -15,7 +16,7 @@
     gap: .5rem;
 }
 .in {
-    border: 1px solid blue;
+    background-color: lightblue;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,12 +24,17 @@
 }
 
 .screen {
-    border: 1px solid gray;
+    background-color: white;
+    border: 1px solid black;
     display: flex;
     grid-column: 1 / span 3;
     justify-content: end;
     font-size: 4.5rem;
-    padding: 1rem 2rem 0;
+    padding: 2rem 2rem 0;
+}
+
+.operator {
+    background-color: lightseagreen;
 }
 
 .p {
@@ -48,6 +54,7 @@
     grid-row: 4 / span 1;
 }
 .enter {
+    background-color: lightslategray;
     grid-column: 4 / span 1;
     grid-row: 5 / span 1;
 }
